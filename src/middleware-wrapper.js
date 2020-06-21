@@ -78,6 +78,7 @@ const middlewareWrapper = config => {
   middleware.pageRoute = (req, res) => {
     healthChecker(validatedConfig.healthChecks).then(results => {
       data.healthCheckResults = results;
+      console.log(results)
       res.send(render(data));
     });
   };
