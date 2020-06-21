@@ -110,11 +110,11 @@ canvas {
   width: 200px;
 }
 
-.health-check-status-container.ok {
+.health-check-status-container.Online {
   background: #75D701;
 }
 
-.health-check-status-container.failed {
+.health-check-status-container.Offline {
   background: #E53A40;
 }
 
