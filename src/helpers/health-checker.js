@@ -38,11 +38,13 @@ module.exports = async healthChecks => {
     results.forEach((result, index) => {
       if (result.state === 'rejected') {
         checkResults.push({
+          host: healthChecks[index].host,
           path: healthChecks[index].path,
           status: 'failed'
         });
       } else {
         checkResults.push({
+          host: healthChecks[index].host,
           path: healthChecks[index].path,
           status: 'ok'
         });
