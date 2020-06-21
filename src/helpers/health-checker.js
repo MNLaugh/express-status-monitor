@@ -40,7 +40,7 @@ module.exports = async healthChecks => {
       let uri = `${data.protocol}://${data.host}`;
       if (data.port)  uri += `:${data.port}`;
       uri += data.path || '';
-      const status = (result.state === 'rejected') ? 'failed' : 'ok';
+      const status = (result.state === 'rejected') ? 'Offline' : 'Online';
       checkResults.push({ uri, status });
     });
 
