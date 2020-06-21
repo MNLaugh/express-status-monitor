@@ -24,7 +24,7 @@ module.exports = async healthChecks => {
       uri += `:${healthCheck.port}`;
     }
 
-    uri += healthCheck.path;
+    uri += healthCheck.path || '';
 
     checkPromises.push(axios({
       url: uri,
@@ -36,8 +36,8 @@ module.exports = async healthChecks => {
 
   return allSettled(checkPromises).then(results => {
     results.forEach((result, index) => {
-      const data = healthCheck[index]
-      const uri = `${data.protocol}://${data.host}`;
+      const data = healthChecks[index]
+      let uri = `${data.protocol}://${data.host}`;
       if (data.port)  uri += `:${data.port}`;
       uri += data.path || '';
       const status = (result.state === 'rejected') ? 'failed' : 'ok';
@@ -47,3 +47,4 @@ module.exports = async healthChecks => {
     return checkResults;
   });
 };
+
