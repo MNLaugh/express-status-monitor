@@ -20,6 +20,7 @@ const middlewareWrapper = config => {
 
   const data = {
     title: validatedConfig.title,
+    favicon: validatedConfig.favicon,
     port: validatedConfig.port,
     socketPath: validatedConfig.socketPath,
     bodyClasses,
